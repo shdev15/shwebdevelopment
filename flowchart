@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+	<html lang="en">
+	<head>
+	<meta charset="UTF-8">
+	<title>Interactive PR Submission Steps</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<style>
+	body { font-family: Arial, sans-serif; background-color: #eef1f4; padding: 40px; }
+	h1 { text-align: center; margin-bottom: 40px; color: #4a90e2; }
+	.flow-row { display: flex; flex-wrap: wrap; align-items: center; justify-content: flex-start; gap: 20px; }
+	.step-box { background-color: #fff; border-left: 10px solid #0897B4; border-radius: 16px; padding: 20px; width: 220px; text-align: center; display: none; box-shadow: 0 4px 16px rgba(0,0,0,0.1); position: relative; }
+	.step-box.visible { display: block; }
+	.step-box:hover { transform: scale(1.02); box-shadow: 0 8px 24px rgba(0,0,0,0.15); }
+	.step-box strong { display: block; font-size: 18px; margin-bottom: 12px; color: #333; }
+	.step-box .description { margin-bottom: 16px; font-size: 15px; line-height: 1.5; color: #555; }
+	.btn { padding: 8px 14px; margin: 6px 4px; border: none; border-radius: 6px; cursor: pointer; font-size: 12px; }
+	.btn-yes { background-color:#29A632; color: white; }
+	.btn-yes:hover { background-color: #3bc65c; }
+	.btn-no { background-color: #D91136; color: white; }
+	.btn-no:hover { background-color:#F23DA0; }
+	.btn-back { background-color: #29A632; color: white; }
+	.btn-back:hover { background-color: #146152; }
+	.btn-learn-more { background-color: #F23322; color: white; }
+	.btn-learn-more:hover { background-color: #117a8b; }
+	.arrow { font-size: 24px; color: #0897B4; display: none; margin: 0 12px; }
+	.arrow.visible { display: block; }
+	.help-box { display: none; background-color: #fff3cd; border-left: 6px solid #ffcc00; padding: 16px; margin-top: 12px; border-radius: 12px; text-align: left; }
+	.help-box p { color: #856404; font-size: 14px; margin-bottom: 10px; }
+	</style>
+	</head>
+	<body>
+	<h1>🐦 Interactive PR Submission Flowchart</h1>
+	<div class="flow-row" id="flow">
+	
+	<!-- Step 1 -->
+	<div class="step-box visible" id="step1">
+	<strong>Step 1</strong>
+	<div class="description">Requirement under $10K?</div>
+	<button class="btn btn-yes" onclick="showStep('step2','arrow1')">Yes</button>
+	<button class="btn btn-no" onclick="showHelpBox('step1')">No – Help me</button>
+	<div class="help-box" id="help-step1">
+	<p>Requirements over $10K require additional quotes or justification. Consult your resource advisor or contracting policy.</p>
+	<button class="btn btn-back" onclick="hideHelpBox('step1')">I got it</button>
+	<button class="btn btn-learn-more" onclick="window.open('explain-step1.html','_blank')">Learn More</button>
+	</div>
+	</div>
+	<div class="arrow" id="arrow1">➨</div>
+	
+	<!-- Step 2 -->
+	<div class="step-box" id="step2">
+	<strong>Step 2</strong>
+	<div class="description">Have vendor quote?</div>
+	<button class="btn btn-yes" onclick="showStep('step3','arrow2')">Yes</button>
+	<button class="btn btn-no" onclick="showHelpBox('step2')">No – Help me</button>
+	<div class="help-box" id="help-step2">
+	<p>You need a written vendor quote including pricing, item details, and validity. Request one.</p>
+	<button class="btn btn-back" onclick="hideHelpBox('step2')">I got it</button>
+	<button class="btn btn-learn-more" onclick="window.open('explain-step2.html','_blank')">Learn More</button>
+	</div>
+	</div>
+	<div class="arrow" id="arrow2">➨</div>
+	
+	<!-- Step 3 -->
+	<div class="step-box" id="step3">
+	<strong>Step 3</strong>
+	<div class="description">Have SOW/PWS?</div>
+	<button class="btn btn-yes" onclick="showStep('step4','arrow3')">Yes</button>
+	<button class="btn btn-no" onclick="showHelpBox('step3')">No – Help me</button>
+	<div class="help-box" id="help-step3">
+	<p>Statement of Work (SOW) or Performance Work Statement (PWS) defines tasks. Work with stakeholders to draft it.</p>
+	<button class="btn btn-back" onclick="hideHelpBox('step3')">I got it</button>
+	<button class="btn btn-learn-more" onclick="window.open('explain-step3.html','_blank')">Learn More</button>
+	</div>
+	</div>
+	<div class="arrow" id="arrow3">➨</div>
+	
+	<!-- Step 4 -->
+	<div class="step-box" id="step4">
+	<strong>Step 4</strong>
+	<div class="description">Is funding approved?</div>
+	<button class="btn btn-yes" onclick="showStep('step5','arrow4')">Yes</button>
+	<button class="btn btn-no" onclick="showHelpBox('step4')">No – Help me</button>
+	<div class="help-box" id="help-step4">
+	<p>Verify funding source and obtain formal approval before proceeding. Contact finance office.</p>
+	<button class="btn btn-back" onclick="hideHelpBox('step4')">I got it</button>
+	<button class="btn btn-learn-more" onclick="window.open('explain-step4.html','_blank')">Learn More</button>
+	</div>
+	</div>
+	<div class="arrow" id="arrow4">➨</div>
+	
+	<!-- Step 5 -->
+	<div class="step-box" id="step5">
+	<strong>Step 5</strong>
+	<div class="description">Submit final PR package</div>
+	<button class="btn btn-yes" onclick="showStep('step6','arrow5')">Yes</button>
+	<button class="btn btn-no" onclick="showHelpBox('step5')">No – Help me</button>
+	<div class="help-box" id="help-step5">
+	<p>Ensure package includes quotes, SOW/PWS, and funding documents. Must be complete.</p>
+	<button class="btn btn-back" onclick="hideHelpBox('step5')">I got it</button>
+	<button class="btn btn-learn-more" onclick="window.open('explain-step5.html','_blank')">Learn More</button>
+	</div>
+	</div>
+	<div class="arrow" id="arrow5">➨</div>
+	
+	<!-- Step 6 -->
+	<div class="step-box" id="step6">
+	<strong>Step 6</strong>
+	<div class="description">Acknowledgment received?</div>
+	<button class="btn btn-yes" onclick="showStep('step7','arrow6')">Yes</button>
+	<button class="btn btn-no" onclick="showHelpBox('step6')">No – Help me</button>
+	<div class="help-box" id="help-step6">
+	<p>Follow up if no acknowledgment within 24 hours. Confirm receipt.</p>
+	<button class="btn btn-back" onclick="hideHelpBox('step6')">I got it</button>
+	<button class="btn btn-learn-more" onclick="window.open('explain-step6.html','_blank')">Learn More</button>
+	</div>
+	</div>
+	<div class="arrow" id="arrow6">➨</div>
+	
+	<!-- Step 7 -->
+	<div class="step-box" id="step7">
+	<strong>Step 7</strong>
+	<div class="description">Documentation uploaded?</div>
+	<button class="btn btn-yes" onclick="showStep('step8','arrow7')">Yes</button>
+	<button class="btn btn-no" onclick="showHelpBox('step7')">No – Help me</button>
+	<div class="help-box" id="help-step7">
+	<p>Upload all PR docs to the shared repository. Check naming conventions.</p>
+	<button class="btn btn-back" onclick="hideHelpBox('step7')">I got it</button>
+	<button class="btn btn-learn-more" onclick="window.open('explain-step7.html','_blank')">Learn More</button>
+	</div>
+	</div>
+	<div class="arrow" id="arrow7">➨</div>
+	
+	<!-- Step 8 -->
+	<div class="step-box" id="step8">
+	<strong>Step 8</strong>
+	<div class="description">Legal review complete?</div>
+	<button class="btn btn-yes" onclick="showStep('step9','arrow8')">Yes</button>
+	<button class="btn btn-no" onclick="showHelpBox('step8')">No – Help me</button>
+	<div class="help-box" id="help-step8">
+	<p>Send package to legal for compliance review. Address feedback.</p>
+	<button class="btn btn-back" onclick="hideHelpBox('step8')">I got it</button>
+	<button class="btn btn-learn-more" onclick="window.open('explain-step8.html','_blank')">Learn More</button>
+	</div>
+	</div>
+	<div class="arrow" id="arrow8">➨</div>
+	
+	<!-- Step 9 -->
+	<div class="step-box" id="step9">
+	<strong>Step 9</strong>
+	<div class="description">Budget reconciliation done?</div>
+	<button class="btn btn-yes" onclick="showStep('step10','arrow9')">Yes</button>
+	<button class="btn btn-no" onclick="showHelpBox('step9')">No – Help me</button>
+	<div class="help-box" id="help-step9">
+	<p>Reconcile PR total against approved budget. Update budget tracker.</p>
+	<button class="btn btn-back" onclick="hideHelpBox('step9')">I got it</button>
+	<button class="btn btn-learn-more" onclick="window.open('explain-step9.html','_blank')">Learn More</button>
+	</div>
+	</div>
+	<div class="arrow" id="arrow9">➨</div>
+	
+	<!-- Step 10 -->
+	<div class="step-box" id="step10">
+	<strong>Step 10</strong>
+	<div class="description">Manager sign-off?</div>
+	<button class="btn btn-yes" onclick="showStep('step11','arrow10')">Yes</button>
+	<button class="btn btn-no" onclick="showHelpBox('step10')">No – Help me</button>
+	<div class="help-box" id="help-step10">
+	<p>Obtain manager approval signature or email confirmation.</p>
+	<button class="btn btn-back" onclick="hideHelpBox('step10')">I got it</button>
+	<button class="btn btn-learn-more" onclick="window.open('explain-step10.html','_blank')">Learn More</button>
+	</div>
+	</div>
+	<div class="arrow" id="arrow10">➨</div>
+	
+	<!-- Step 11 -->
+	<div class="step-box" id="step11">
+	<strong>Step 11</strong>
+	<div class="description">Final approval granted?</div>
+	<button class="btn btn-yes" onclick="showStep('step12','arrow11')">Yes</button>
+	<button class="btn btn-no" onclick="showHelpBox('step11')">No – Help me</button>
+	<div class="help-box" id="help-step11">
+	<p>Check final approver list and escalate if needed.</p>
+	<button class="btn btn-back" onclick="hideHelpBox('step11')">I got it</button>
+	<button class="btn btn-learn-more" onclick="window.open('explain-step11.html','_blank')">Learn More</button>
+	</div>
+	</div>
+	<div class="arrow" id="arrow11">➨</div>
+	
+	<!-- Step 12 -->
+	<div class="step-box" id="step12">
+	<strong>Step 12</strong>
+	<div class="description">Notify finance team?</div>
+	<button class="btn btn-yes" onclick="showStep('step13','arrow12')">Yes</button>
+	<button class="btn btn-no" onclick="showHelpBox('step12')">No – Help me</button>
+	<div class="help-box" id="help-step12">
+	<p>Send notification email to finance with PR details and approvals.</p>
+	<button class="btn btn-back" onclick="hideHelpBox('step12')">I got it</button>
+	<button class="btn btn-learn-more" onclick="window.open('explain-step12.html','_blank')">Learn More</button>
+	</div>
+	</div>
+	<div class="arrow" id="arrow12">➨</div>
+	
+	<!-- Step 13 -->
+	<div class="step-box" id="step13">
+	<strong>Step 13</strong>
+	<div class="description">Payment processed?</div>
+	<button class="btn btn-yes" onclick="showStep('step14','arrow13')">Yes</button>
+	<button class="btn btn-no" onclick="showHelpBox('step13')">No – Help me</button>
+	<div class="help-box" id="help-step13">
+	<p>Follow up with finance to confirm payment processing status.</p>
+	<button class="btn btn-back" onclick="hideHelpBox('step13')">I got it</button>
+	<button class="btn btn-learn-more" onclick="window.open('explain-step13.html','_blank')">Learn More</button>
+	</div>
+	</div>
+	<div class="arrow" id="arrow13">➨</div>
+	
+	<!-- Step 14 -->
+	<div class="step-box" id="step14">
+	<strong>Step 14</strong>
+	<div class="description">You are done!</div>
+	<button class="btn btn-yes" onclick="window.open('explain-step14.html','_blank')">
+	Submit PR</button>
+	
+	</div>
+	
+	</div>
+	
+	<script>
+	function showStep(stepId, arrowId) {
+	document.getElementById(arrowId)?.classList.add('visible');
+	document.getElementById(stepId)?.classList.add('visible');
+	document.getElementById(stepId)?.scrollIntoView({ behavior: 'smooth' });
+	}
+	function showHelpBox(stepId) {
+	document.getElementById('help-' + stepId).style.display = 'block';
+	document.getElementById(stepId).scrollIntoView({ behavior: 'smooth' });
+	}
+	function hideHelpBox(stepId) {
+	document.getElementById('help-' + stepId).style.display = 'none';
+	document.getElementById(stepId).scrollIntoView({ behavior: 'smooth' });
+	}
+	</script>
+	</body>
+	</html>
